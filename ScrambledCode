@@ -1,0 +1,95 @@
+plot1 <- ggplot(PaDSData, aes(x = PaDS_total, y = PHQ_Total)) +
+  geom_point() +
+  geom_smooth(se = FALSE, method = "lm") +
+  theme_classic()
+
+summary(PaDSData)
+
+geom_boxplot() +
+  ggplot(PaDSData, aes(x = gender_bin, y = PaDS_total)) +
+  theme_classic() +
+  labs(title = "Persecution by Gender", y = "Persecution", x = "Gender")
+
+RegressionA <- lm(PaDS_total ~ age + gender_bin + PHQ_Total + AUS_total + DUS_total, data = PaDSData)
+
+cor.test(PaDSData$PaDS_total, PaDSData$AUS_Total, method = "pearson")
+
+PaDSData$gender_bin <- as.factor(PaDSData$gender_bin)
+
+library(gridExtra)
+
+RegressionB <- lm(PaDS_total ~ age + gender_bin*AUS_total + gender_bin*DUS_total, data = PaDSData)
+
+PaDSData$PaDS_total <- as.numeric(PaDSData$PaDS_total)
+
+cor.test(female$PaDS_total, female$DUS_total, method = "pearson")
+
+install.packages("gridExtra")
+
+PaDSData <- read_csv("Persecution.csv")
+
+cor.test(male$PaDS_total, male$AUS_total, method = "pearson")
+
+PaDSData$AUS_Total <- as.numeric(PaDSData$AUS_Total)
+
+print(descriptives_bygroup)
+
+install.packages("cocor")
+
+PaDSData %>% dplyr::select(PaDS_total, PHQ_Total, AUS_Total, DUS_total) %>% correlation(p_adjust = "none")
+
+cor.test(male$PaDS_total, male$DUS_total, method = "pearson")
+
+summary(RegressionB)
+
+library(tidyverse)
+
+plot3 <- ggplot(PaDSData, aes(x = PaDS_total, y = DUS_total)) +
+  geom_smooth(se = FALSE, method = "lm") +
+  geom_point() +
+  theme_classic()
+
+install.packages("correlation")
+
+plot2 <- ggplot(PaDSData, aes(x = PaDS_total, y = AUS_Total)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_classic()
+
+library(cocor)
+
+summary(RegressionA)
+
+view(PaDSData)
+
+cor.test(PaDSData$PaDS_total, PaDSData$PHQ_Total, method = "pearson")
+
+PaDSData$gender <- as.factor(PaDSData$gender)
+
+PaDSData$PHQ_Total <- as.numeric(PaDSData$PHQ_Total)
+
+PaDSData$age <- as.numeric(PaDSData$age)
+
+PaDSData$DUS_total <- as.numeric(PaDSData$DUS_total)
+
+PaDSData %>%
+  summarise(mean_PaDS_total = mean(PaDS_total), PaDS_total = sd(PaDS_total)) %>%
+  group_by(gender_bin) -> descriptives_bygroup
+
+install.packages("tidyverse")
+
+library(correlation)
+
+male <- PaDSData[PaDSData$gender_bin == "1", ]
+
+female <- PaDSData[PaDSData$gender_bin == "0", ]
+
+cor.test(female$PaDS_total, female$AUS_total, method = "pearson")
+
+grid.arrange(plot1, plot3, plot2, ncol = 3, nrow = 1)
+
+cocor.indep.groups(0.6389198, 0.5047027, 127, 119)
+
+cor.test(PaDSData$PaDS_total, PaDSData$DUS_total, method = "pearson")
+
+cocor.indep.groups(0.5599937, 0.4920137, 127, 119)
